@@ -24,3 +24,4 @@ iree_cc_binary(
     openxla::runtime::async_test::async_test
     absl::base
 )
+
