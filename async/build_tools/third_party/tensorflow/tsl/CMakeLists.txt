@@ -8,8 +8,6 @@ set(TENSORFLOW_ROOT "${OPENXLA_ASYNC_ROOT_DIR}/third_party/tensorflow/")
 set(EIGEN_ROOT "${OPENXLA_ASYNC_ROOT_DIR}/third_party/eigen/")
 set(TENSORFLOW_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/../../")
 
-add_subdirectory(protobuf)
-
 external_cc_library(
   PACKAGE
     tsl
