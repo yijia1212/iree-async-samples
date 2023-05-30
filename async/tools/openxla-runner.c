@@ -46,6 +46,9 @@ int main(int argc, char** argv) {
   iree_vm_module_t* async_runtime_module = NULL;
   IREE_CHECK_OK(iree_async_runtime_module_create(instance, allocator,
                                                  &async_runtime_module));
+  iree_vm_module_t* async_runtime_test_module = NULL;
+  IREE_CHECK_OK(openxla_async_test_module_create(instance, allocator,
+                                                 &async_runtime_test_module));
 
   iree_vm_module_t* async_runtime_test_module = NULL;
   IREE_CHECK_OK(openxla_async_test_module_create(instance, allocator,
