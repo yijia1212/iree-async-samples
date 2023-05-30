@@ -12,6 +12,7 @@
 #include "iree/vm/bytecode/module.h"
 #include "openxla/runtime/async/loop_async.h"
 #include "openxla/runtime/async/module.h"
+#include "openxla/runtime/async_test/module.h"
 
 void FreeLoop(iree_allocator_t allocator, iree_loop_t loop);
 
@@ -45,6 +46,9 @@ int main(int argc, char** argv) {
   iree_vm_module_t* async_runtime_module = NULL;
   IREE_CHECK_OK(iree_async_runtime_module_create(instance, allocator,
                                                  &async_runtime_module));
+  iree_vm_module_t* async_runtime_test_module = NULL;
+  IREE_CHECK_OK(openxla_async_test_module_create(instance, allocator,
+                                                 &async_runtime_test_module));
 
   const char* module_path = argv[1];
   iree_file_contents_t* module_contents = NULL;
@@ -61,7 +65,8 @@ int main(int argc, char** argv) {
       iree_file_contents_deallocator(module_contents), allocator,
       &bytecode_module));
 
-  iree_vm_module_t* modules[] = {async_runtime_module, bytecode_module};
+  iree_vm_module_t* modules[] = {async_runtime_module,
+                                 async_runtime_test_module, bytecode_module};
   iree_vm_context_t* context = NULL;
   IREE_CHECK_OK(iree_vm_context_create_with_modules(
       instance, IREE_VM_CONTEXT_FLAG_NONE, IREE_ARRAYSIZE(modules), modules,

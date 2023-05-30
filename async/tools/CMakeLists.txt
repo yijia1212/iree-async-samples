@@ -21,5 +21,6 @@ iree_cc_binary(
     iree::tooling::vm_util
     iree::vm
     openxla::runtime::async::async
+    openxla::runtime::async_test::async_test
     absl::base
 )
