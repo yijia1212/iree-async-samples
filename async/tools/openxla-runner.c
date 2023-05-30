@@ -50,10 +50,6 @@ int main(int argc, char** argv) {
   IREE_CHECK_OK(openxla_async_test_module_create(instance, allocator,
                                                  &async_runtime_test_module));
 
-  iree_vm_module_t* async_runtime_test_module = NULL;
-  IREE_CHECK_OK(openxla_async_test_module_create(instance, allocator,
-                                                 &async_runtime_test_module));
-
   const char* module_path = argv[1];
   iree_file_contents_t* module_contents = NULL;
   if (strcmp(module_path, "-") == 0) {
