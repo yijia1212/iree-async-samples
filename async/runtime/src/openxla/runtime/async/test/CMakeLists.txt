@@ -1,18 +1,18 @@
-# Copyright 2022 The IREE Authors
+# Copyright 2023 The IREE Authors
 #
 # Licensed under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
-iree_lit_test_suite(
-  NAME
-    lit
-  SRCS
-    "example.mlir"
-  TOOLS
-    FileCheck
-    iree-compile
-    openxla-runner
-  LABELS
-    "hostonly"
+iree_bytecode_module(
+    NAME
+      module_test_module
+    SRC
+      "module_test.mlir"
+    C_IDENTIFIER
+      "openxla_async_module_test_module"
+    FLAGS
+      "--compile-mode=vm"
+    TESTONLY
+    PUBLIC
 )

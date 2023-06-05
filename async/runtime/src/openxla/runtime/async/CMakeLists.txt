@@ -67,6 +67,24 @@ iree_cc_library(
   PUBLIC
 )
 
+iree_cc_test(
+  NAME
+    module_test
+  SRCS
+    "module_test.cpp"
+  DEPS
+    ::defs
+    ::async
+    ::loop_async
+    iree::base
+    iree::base::internal::wait_handle
+    iree::testing::gtest
+    iree::testing::gtest_main
+    iree::vm
+    iree::vm::bytecode::module
+    openxla::runtime::async::test::module_test_module_c
+    openxla::runtime::async_test::async_test
+)
 
 
 
